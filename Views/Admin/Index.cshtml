@@ -1,0 +1,61 @@
+﻿@using WebApplication1.Models.ViewModels.NewsViewModels.admin
+@using WebApplication1.Models.DTO
+@model IndexNewsAdminViewModels
+
+
+<h1>Index</h1>
+<p>
+    @Html.ActionLink("Add news", "Create", routeValues: null, htmlAttributes: new {@class="btn btn-sm btn-warning", id="createBtn"})
+</p>
+<form asp-action="Index" method="get">
+    <div class="row mb-5">
+        <div class="col col-md-4 col-12">
+            <select asp-for="AuthourId"
+                    class="form-select bg-light text-dark"
+                    asp-items="@Model.AuthourSL">
+                <option value="0" selected="selected">All</option>
+            </select>
+            </div>
+        <div class="col col-md-4 col-12">
+            <input type="text"
+                   asp-for="Search"
+                   placeholder="Search in news Title "
+                   class="form-control" />
+        </div>
+        <div class="col col-md-4 col-12">
+            <button type="submit" class="btn btn-outline-success">Seacrh</button>
+        </div>
+    </div>
+</form>
+<div class="row">
+    @foreach (newsDTO cat in Model.NewsDTOs)
+    {
+        <div class="col col-xl-3 col-lg-4 col-md-6 col-12 mb-5">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">@cat.Title</h5>
+                    <p class="card-text text-truncate">@cat.Description</p>
+                    <p class="card-text">
+                        <small class="text-muted">
+                            @*@Html.DisplayNameFor(model=> model.NewsDTOs.First().Date!.ToShortDateString()) :
+                        @cat.Date*@
+                        @cat.Date.ToShortDateString()
+                        </small>
+                    </p>
+                </div>
+                <div class="btn-group btn-group-sm mb-2">
+                    <a asp-action="Details"
+                   asp-route-id="@cat.Id"
+                   class="btn btn-outline-success">Details</a>
+                       <a asp-action="Edit"
+               asp-route-id="@cat.Id"
+               class="btn btn-outline-warning">Edit</a>
+                    <a asp-action="Delete"
+               asp-route-id="@cat.Id"
+                   class="btn btn-outline-danger">Delete</a>
+                </div>
+                <img src="data:image/*;base64,@(Convert.ToBase64String(cat.Image!))" class="card-img-bottom" alt="@cat.Title">
+            </div>
+        </div>
+    }
+</div>
