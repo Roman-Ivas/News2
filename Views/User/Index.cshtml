@@ -1,6 +1,4 @@
-﻿@using WebApplication1.Models.ViewModels.NewsViewModels.User
-@using WebApplication1.Models.DTO
-@model IndexNewsUserViewModels
+﻿@model IndexNewsUserViewModels
 
 
 <h1>Index</h1>
@@ -37,11 +35,11 @@
                         <small class="text-muted">
                             @*@Html.DisplayNameFor(model=> model.NewsDTOs.First().Date!.ToShortDateString()) :
                             @cat.Date*@
-                                                    @cat.Date.ToShortDateString();
+                                                    @cat.Date.ToShortDateString()
                         </small>
                     </p>
                 </div>
-                <div class="btn-group btn-group-sm mb-2">
+                <div class="btn-group btn-group-sm mb-2 mt-1">
                     <a asp-action="Details"
                     asp-route-id="@cat.Id"
                     class="btn btn-outline-success">Details</a>

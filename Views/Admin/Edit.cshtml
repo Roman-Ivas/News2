@@ -1,5 +1,4 @@
-﻿@using WebApplication1.Models.DTO
-@model WebApplication1.Models.ViewModels.NewsViewModels.admin.EditNewsAdminViewsModels
+﻿@model EditNewsAdminViewsModels
 
 @{
     ViewData["Title"] = "Edit";
@@ -47,7 +46,7 @@
                        class="form-control" />
                 <span asp-validation-for="Image" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group mt-1">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>

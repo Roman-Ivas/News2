@@ -13,6 +13,7 @@ namespace WebApplication1.Models.DTO
         public string Description { get; set; } = default!;
 
         //public string? AuthorName { get; set; }
+        [Display(Name = "Author Name")]
 
         public AuthourDTO? AuthourDTO { get; set; }
 
